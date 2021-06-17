@@ -96,3 +96,13 @@ body {
     transform: scale(0.4, 0.4);
   }
 }
+
+.btn-autumn {
+  background-color: #f78154;
+}
+.btn-neon {
+  background-color: #39bfbd;
+}
+.btn-night {
+  background-color: #8cba80;
+}

@@ -8,21 +8,17 @@
         libero eos eum! Quia, aut.
       </p>
       <div>
-        <h1 class="text-danger p-1">change color</h1>
+        <h1 class="text-danger p-1">change theme</h1>
 
-        <button class="btn btn-primary m-1" (click)="primary()">primary</button>
-        <button class="btn btn-secondary m-1" (click)="secondary()">
+        <button class="btn btn-autumn m-1" (click)="changeTheme('autumn')">
+          Autumn
+        </button>
+        <button class="btn btn-neon m-1" (click)="changeTheme('neon')">
           secondary
         </button>
-        <button class="btn btn-success m-1" (click)="success()">success</button>
-        <button class="btn btn-danger m-1" (click)="danger()">danger</button>
-        <button class="btn btn-warning m-1" (click)="warning()">warning</button>
-        <button class="btn btn-info m-1" (click)="info()">info</button>
-        <div>
-          <h1 class="text-light p-1">random colors</h1>
-
-          <button class="btn btn-light m-1" (click)="random()">random</button>
-        </div>
+        <button class="btn btn-night m-1" (click)="changeTheme('night')">
+          Dark
+        </button>
       </div>
     </div>
     <div class="col-md-4 mt-5 ml-1">
