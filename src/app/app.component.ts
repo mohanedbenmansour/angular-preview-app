@@ -8,8 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular-preview-app';
 color:string="http://localhost:8100/tabs/tab1?color=primary";
+
 primary(){
   this.color="http://localhost:8100/tabs/tab1?color=primary"
+  
 }
 secondary(){
   this.color="http://localhost:8100/tabs/tab1?color=secondary"
@@ -26,4 +28,8 @@ warning(){
 info(){
   this.color="http://localhost:8100/tabs/tab1?color=info"
 }
+random(){
+  this.color="http://localhost:8100/tabs/tab1?color=random"
+}
+
 }
