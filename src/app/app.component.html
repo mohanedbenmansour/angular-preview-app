@@ -14,17 +14,32 @@
           Autumn
         </button>
         <button class="btn btn-neon m-1" (click)="changeTheme('neon')">
-          secondary
+          neon
         </button>
         <button class="btn btn-night m-1" (click)="changeTheme('night')">
           Dark
         </button>
+        <button class="btn btn-cream m-1" (click)="changeTheme('cream')">
+          cream
+        </button>
       </div>
     </div>
     <div class="col-md-4 mt-5 ml-1">
+      <button class="btn btn-danger m-1" (click)="view('front')">
+        front view
+      </button>
+
+      <button class="btn btn-danger m-1" (click)="view('side')">
+        side view
+      </button>
+
+      <button class="btn btn-danger m-1" (click)="view('laying')">
+        laying view
+      </button>
+
       <div id="wrapper">
-        <div class="phone view_3" id="phone_3">
-          <iframe [src]="color | safe" id="frame_3"></iframe>
+        <div class="{{ viewClass }}" id="phone_1">
+          <iframe [src]="color | safe" id="frame_1"></iframe>
         </div>
       </div>
     </div>
