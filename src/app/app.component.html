@@ -1,14 +1,34 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-8 text-light mt-5">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates,
-        placeat dolorem aliquam provident dolore quas, voluptas quia asperiores
-        voluptatem sequi voluptatibus, sunt praesentium exercitationem iure
-        libero eos eum! Quia, aut.
-      </p>
       <div>
-        <h1 class="text-danger p-1">change theme</h1>
+        <h1 class="text-light p-1">change theme</h1>
+
+        <div class="row" *ngFor="let item of custom | keyvalue">
+          <div class="col-sm-8">
+            <div class="d-flex justify-content-start">
+              <div
+                class="color-selector m-1"
+                [ngStyle]="{ background: item.value }"
+              ></div>
+
+              <h2>{{ item.key }}</h2>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <input
+              [(colorPicker)]="item.value"
+              size="4"
+              [ngStyle]="{ background: item.value }"
+            />
+          </div>
+        </div>
+
+        <button class="btn btn-autumn m-1 right" (click)="sendTheme()">
+          confirm changes
+        </button>
+
+        <h1 class="text-light p-1">our custom themes</h1>
 
         <button class="btn btn-autumn m-1" (click)="changeTheme('autumn')">
           Autumn
@@ -39,7 +59,7 @@
 
       <div id="wrapper">
         <div class="{{ viewClass }}" id="phone_1">
-          <iframe [src]="color | safe" id="frame_1"></iframe>
+          <iframe [src]="theme | safe" id="frame_1"></iframe>
         </div>
       </div>
     </div>

@@ -110,3 +110,8 @@ body {
 .btn-cream {
   background-color: #3eb595;
 }
+.color-selector {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}

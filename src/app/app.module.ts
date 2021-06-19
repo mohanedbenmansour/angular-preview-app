@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SafePipe } from './safe.pipe';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { SocketService } from './socket.service';
 
 @NgModule({
   declarations: [
@@ -10,9 +12,11 @@ import { SafePipe } from './safe.pipe';
     SafePipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ColorPickerModule,
+    
   ],
-  providers: [],
+  providers: [SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
