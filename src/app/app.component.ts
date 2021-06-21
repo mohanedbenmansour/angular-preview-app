@@ -1,6 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketService } from './socket.service';
 
+
+interface theme {
+  primary: string,
+  secondary:  string,
+  tertiary:  string,
+  success:  string,
+  warning:  string,
+  danger:  string,
+  dark:  string,
+  medium:  string,
+  light: string,
+}
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +22,7 @@ import { SocketService } from './socket.service';
 })
 export class AppComponent  implements OnInit {
   title = 'angular-preview-app';
-theme:string="http://localhost:8100/tabs/tab1";
+theme:string="http://localhost:8100/tabs?ionic:mode=ios";
 color:any;
 viewClass:string="phone view_3";
 constructor(private socketService: SocketService) {
@@ -63,8 +77,8 @@ constructor(private socketService: SocketService) {
     dark: '#34162A'
   }
 };
-  custom={
-  primary: '#3880ff',
+  custom:theme={
+  primary: "#3880ff",
   secondary: '#0cd1e8',
   tertiary: '#7044ff',
   success: '#10dc60',
@@ -81,13 +95,17 @@ ngOnInit(): void {
   this.socketService
 .connectToSocket()
 }
-
+//change the custom theme and send it to the ionic app
 changeTheme(theme){
 
 this.custom=this.themes[theme];
 
 this.sendTheme()
 }
+//switch between ios and android
+changeMode(name:string){
+ this.theme="http://localhost:8100/tabs?ionic:mode="+name;
+  }
 
 view(name){
 if(name=="laying"){
@@ -107,5 +125,11 @@ sendTheme(){
   this.socketService.emit("theme",this.custom);
 
 }
+changeCustomColor(colorName,color){
+this.custom[colorName]=color;
+
+this.sendTheme()
+}
+
 
 }

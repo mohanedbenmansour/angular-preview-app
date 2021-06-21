@@ -20,13 +20,10 @@
               [(colorPicker)]="item.value"
               size="4"
               [ngStyle]="{ background: item.value }"
+              (colorPickerSelect)="changeCustomColor(item.key, item.value)"
             />
           </div>
         </div>
-
-        <button class="btn btn-autumn m-1 right" (click)="sendTheme()">
-          confirm changes
-        </button>
 
         <h1 class="text-light p-1">our custom themes</h1>
 
@@ -42,20 +39,28 @@
         <button class="btn btn-cream m-1" (click)="changeTheme('cream')">
           cream
         </button>
+        <br />
+        <h1 class="text-light p-1">Device view</h1>
+
+        <button class="btn btn-danger m-1" (click)="view('front')">
+          front view
+        </button>
+
+        <button class="btn btn-danger m-1" (click)="view('side')">
+          side view
+        </button>
+
+        <button class="btn btn-danger m-1" (click)="view('laying')">
+          laying view
+        </button>
       </div>
     </div>
-    <div class="col-md-4 mt-5 ml-1">
-      <button class="btn btn-danger m-1" (click)="view('front')">
-        front view
-      </button>
 
-      <button class="btn btn-danger m-1" (click)="view('side')">
-        side view
+    <div class="col-md-4 mt-5 ml-1 text-center">
+      <button class="btn btn-success m-1" (click)="changeMode('ios')">
+        ios
       </button>
-
-      <button class="btn btn-danger m-1" (click)="view('laying')">
-        laying view
-      </button>
+      <button class="btn btn-danger" (click)="changeMode('md')">and</button>
 
       <div id="wrapper">
         <div class="{{ viewClass }}" id="phone_1">
