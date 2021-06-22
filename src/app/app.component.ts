@@ -108,7 +108,7 @@ export class AppComponent implements OnInit {
   }
   //switch between ios and android
   changeMode(name: string) {
-    this.theme = "http://localhost:8100/tabs?ionic:mode=" + name;
+    this.theme = "https://ionic-nest-crud.herokuapp.com/tabs?ionic:mode=" + name;
 
     this.modeIos = name == "md" ? false : true;
   }
@@ -139,6 +139,12 @@ export class AppComponent implements OnInit {
     //change the background color of the iframe
     if (colorName == "primary")
       this.backgroundColor = "background-color:"+color;
+  }
+  //this function is for the custom themes
+  setCustomPrimary(color){
+    this.custom.primary=color;
+    this.backgroundColor = "background-color:"+color;
+    this.sendTheme();
   }
   //empty function to prevent keyvalue from sorting
   unsorted() { }
