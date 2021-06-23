@@ -7,7 +7,7 @@ import {io,Socket} from "socket.io-client"
 })
 export class SocketService {
   socket:Socket;
-   url:string="https://socket-server-preview.herokuapp.com"
+   url:string="https://socket-server-preview.herokuapp.com/"
   constructor() {
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketService } from './socket.service';
+import { ThemeService } from './theme.service';
 
 
 interface theme {
@@ -25,11 +26,10 @@ export class AppComponent implements OnInit {
   theme: string = "https://ionic-nest-crud.herokuapp.com/tabs?ionic:mode=ios";
   color: any;
   viewClass: string = "phone view_3";
-  backgroundColor: string = "background-color:#3880ff"
   //variable for the mode name this will be removed when we change it to toggle instead of buttons
 
   modeIos: boolean = true;
-  constructor(private socketService: SocketService) {
+  constructor(private socketService: SocketService,private themeService:ThemeService) {
 
   }
 
@@ -98,6 +98,7 @@ export class AppComponent implements OnInit {
 
     this.socketService
       .connectToSocket()
+this.initialise();
   }
   //change the custom theme and send it to the ionic app
   changeTheme(theme) {
@@ -108,7 +109,7 @@ export class AppComponent implements OnInit {
   }
   //switch between ios and android
   changeMode(name: string) {
-    this.theme = "https://ionic-nest-crud.herokuapp.com/tabs?ionic:mode=" + name;
+    this.theme = "https://ionic-nest-crud.herokuapp.com/tabs/tab1?ionic:mode=" + name;
 
     this.modeIos = name == "md" ? false : true;
   }
@@ -134,18 +135,21 @@ export class AppComponent implements OnInit {
 
   changeCustomColor(colorName, color) {
     this.custom[colorName] = color;
-
+     this.themeService.saveBackgroundColor(color);
     this.sendTheme()
-    //change the background color of the iframe
-    if (colorName == "primary")
-      this.backgroundColor = "background-color:"+color;
+
+ 
   }
   //this function is for the custom themes
   setCustomPrimary(color){
+    this.themeService.saveBackgroundColor(color);
     this.custom.primary=color;
-    this.backgroundColor = "background-color:"+color;
     this.sendTheme();
   }
   //empty function to prevent keyvalue from sorting
   unsorted() { }
+  //function to initialise primary color from localStorage
+  initialise(){
+    this.custom.primary=this.themeService.loadBackgroundColor();
+}
 }

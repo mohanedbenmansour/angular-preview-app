@@ -193,11 +193,19 @@
       </button>
       <button class="btn btn-danger" (click)="changeMode('md')">and</button>
  -->
-
+      <!--
+  
+-->
       <div id="wrapper">
-        <div class="phone view_3 text-center" [style]="backgroundColor">
+        <div class="phone view_3 text-center" style="background-color: black">
           <!--for ios -->
-          <svg class="" *ngIf="modeIos" style="width: 50%" viewBox="0 0 219 31">
+
+          <svg
+            class=""
+            *ngIf="modeIos"
+            viewBox="0 0 219 31"
+            class="docs-demo-device__ios-notch"
+          >
             <path
               d="M0 1V0h219v1a5 5 0 0 0-5 5v3c0 12.15-9.85 22-22 22H27C14.85 31 5 21.15 5 9V6a5 5 0 0 0-5-5z"
               fill-rule="evenodd"
@@ -205,7 +213,7 @@
           </svg>
           <!--for android -->
           <svg
-            class=""
+            class="docs-demo-device__md-bar"
             *ngIf="!modeIos"
             style="width: 90%; opacity: 0.5"
             viewBox="0 0 1384.3 40.3"
@@ -221,7 +229,7 @@
             ></path>
           </svg>
 
-          <iframe [src]="theme | safe"></iframe>
+          <iframe loading="lazy" importance="low" [src]="theme | safe"></iframe>
         </div>
       </div>
     </div>
